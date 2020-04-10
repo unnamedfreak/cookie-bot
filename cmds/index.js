@@ -7,7 +7,7 @@ module.exports.cmds = {
 }
 
 try {
-    const local = require('./localFn');
+    const local = require('../ignoredFiles/localFn');
     module.exports.cmds.local = local;
 } catch {
     return;

@@ -8,6 +8,7 @@ module.exports.run = async (client, message, args) => {
     let botChannel = message.guild.channels.cache.get(statChannels.botChannel);
     let ageChannel = message.guild.channels.cache.get(statChannels.ageChannel);
 
+    await message.guild.members.fetch();
     memChannel.setName(`👤 Member Count: ${message.guild.members.cache.filter(member => !member.user.bot).size}`);
     botChannel.setName(`🤖 Bot Count: ${message.guild.members.cache.filter(member => member.user.bot).size}`)
     

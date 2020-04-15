@@ -12,12 +12,12 @@ client.on('ready', () => {
 })
 
 client.on('message', async (message) => {
+    handlers.serverAgeHandler(message);
     if(!message.content.startsWith(config.prefix)) return;
     let msg = message.content.slice(config.prefix.length);
     let cmd = msg.split(" ").shift();
     let args = msg.split(" ").slice(1);
     if(cmdKeys.includes(cmd)) {
-
         cmds[cmd].run(client, message, args);
     }
 })
@@ -36,10 +36,13 @@ client.on('messageReactionRemove', async (reaction, user) => {
 client.on('guildMemberAdd', async (member) => {
     member.roles.add('426340714893410304');
     handlers.memberCountHandler(member);
+    handlers.serverAgeHandler(member);
+
 })
 
 client.on('guildMemberRemove', async (member) => {
     handlers.memberCountHandler(member);
+    handlers.serverAgeHandler(member);
 })
 
 try {

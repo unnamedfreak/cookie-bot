@@ -35,6 +35,11 @@ client.on('messageReactionRemove', async (reaction, user) => {
 
 client.on('guildMemberAdd', async (member) => {
     member.roles.add('426340714893410304');
+    handlers.memberCountHandler(member);
+})
+
+client.on('guildMemberRemove', async (member) => {
+    handlers.memberCountHandler(member);
 })
 
 try {

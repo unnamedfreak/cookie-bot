@@ -7,7 +7,7 @@ module.exports.cmds = {
     setInvite: require('./statCmds/setInvite'),
     updateStats: require('./statCmds/updateStats'),
     setPresence: require('./setPresence'),
-    listMembers: require('./listMembers')
+    listMembers: require('./listMembers'),
 }
 
 try {

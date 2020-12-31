@@ -34,10 +34,10 @@ client.on('messageReactionRemove', async (reaction, user) => {
 })
 
 client.on('guildMemberAdd', async (member) => {
+    handlers.greetingHandler(member);
     member.roles.add('426340714893410304');
     handlers.memberCountHandler(member);
     handlers.serverAgeHandler(member);
-
 })
 
 client.on('guildMemberRemove', async (member) => {

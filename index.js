@@ -1,8 +1,16 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 
+const admin = require("firebase-admin");
+const serviceAccount = require("./cookie-yuqicord-firebase-adminsdk-7v8yo-921f6b9665.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+const db = admin.firestore();
+
 const config = require('./stores/config');
-const { handlers } = require('./handlers/');
+const handlers = require('./handlers/');
 
 const { cmds } = require('./cmds');
 let cmdKeys = Object.keys(cmds);
@@ -13,6 +21,8 @@ client.on('ready', () => {
 
 client.on('message', async (message) => {
     handlers.serverAgeHandler(message);
+    if(message.author.bot) return;
+    handlers.xpHandler(message, db);
     if(!message.content.startsWith(config.prefix)) return;
     let msg = message.content.slice(config.prefix.length);
     let cmd = msg.split(" ").shift();

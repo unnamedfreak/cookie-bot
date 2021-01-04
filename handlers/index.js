@@ -6,5 +6,5 @@ module.exports = {
     memberCountHandler: require('./statsHandlers/memberCountHandler'),
     serverAgeHandler: require('./statsHandlers/serverAgeHandler'),
     greetingHandler: require('./greetingHandler'),
-    xpHandler: require('./rankHandlers/xpHandler'),
+    xpHandler: require('./xpHandler'),
 }

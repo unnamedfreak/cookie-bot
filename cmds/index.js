@@ -8,6 +8,7 @@ module.exports.cmds = {
     updateStats: require('./statCmds/updateStats'),
     setPresence: require('./setPresence'),
     listMembers: require('./listMembers'),
+    bake: require('./bake'),
     devMode: require('./devMode')
 }
 

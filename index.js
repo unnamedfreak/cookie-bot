@@ -22,13 +22,15 @@ client.on('ready', () => {
 client.on('message', async (message) => {
     handlers.serverAgeHandler(message);
     if(message.author.bot) return;
-    handlers.xpHandler(message, db);
-    if(!message.content.startsWith(config.prefix)) return;
+    if(!message.content.startsWith(config.prefix)) {
+        handlers.xpHandler(message, db);
+        return;
+    };
     let msg = message.content.slice(config.prefix.length);
     let cmd = msg.split(" ").shift();
     let args = msg.split(" ").slice(1);
     if(cmdKeys.includes(cmd)) {
-        cmds[cmd].run(client, message, args);
+        cmds[cmd].run(client, message, args, db);
     }
 })
 

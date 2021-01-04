@@ -9,7 +9,8 @@ module.exports.cmds = {
     setPresence: require('./setPresence'),
     listMembers: require('./listMembers'),
     bake: require('./bake'),
-    devMode: require('./devMode')
+    profile: require('./profile'),
+    devMode: require('./devMode'),
 }
 
 try {

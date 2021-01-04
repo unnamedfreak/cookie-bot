@@ -53,7 +53,7 @@ module.exports.run = async (client, message, args, db) => {
         let lastBaked = uInv.data().lastBaked;
         let timeDiff = (lastBaked + HALF_DAY_IN_MS) - currTime;
 
-        if(timeDiff < HALF_DAY_IN_MS) {
+        if(timeDiff > 0) {
             let uCookies = uInv.data().cookies;
             sendCooldownEmbed(message, timeDiff, uCookies);
         } else {
